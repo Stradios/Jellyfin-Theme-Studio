@@ -22,7 +22,8 @@ It targets both generations of Jellyfin styling: the new **10.11+ palette variab
 plugins, no theme repository, no server access required: *Dashboard → Branding → Custom CSS*,
 paste, save.
 
-**Try it without cloning anything:** <https://perchance.org/jellyfin-theme-studio>
+**Try it without cloning anything:** <https://perchance.org/jellyfin-theme-studio> — or the
+self-hosted copy of the same file at <https://stradios.github.io/Jellyfin-Theme-Studio/>.
 
 <p align="center">
   <img src="assets/font-picker.jpg" width="49%" alt="The font picker: 2,035 families with search, category and library filters, licence badges and live previews">
@@ -93,8 +94,8 @@ dependencies at runtime.
 
 ```bash
 # clone and open it
-git clone https://github.com/<your-user>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/Stradios/Jellyfin-Theme-Studio.git
+cd Jellyfin-Theme-Studio
 python3 -m http.server 8080     # or: npx serve .
 # → http://localhost:8080/
 ```
@@ -104,14 +105,19 @@ static server is more reliable for fonts and clipboard permissions.
 
 ### Deploy it on GitHub Pages
 
-1. Create a repository and push this folder to the `main` branch.
+1. Fork or clone this repository (or push the whole folder to your own repo's `main` branch).
 2. **Settings → Pages → Build and deployment → Source: _Deploy from a branch_**, branch
    `main`, folder **/ (root)**. Save.
-3. A minute later your studio is live at `https://<your-user>.github.io/<your-repo>/`.
+3. A minute later your studio is live at `https://<your-user>.github.io/<your-repo>/` — for
+   this repository that is <https://stradios.github.io/Jellyfin-Theme-Studio/>.
 
-Nothing else is needed: the root `index.html` is already the built site, `.nojekyll` keeps
-GitHub from running Jekyll over it, and there are no relative asset dependencies other than
-the screenshots in `assets/`.
+Nothing else is needed for this route: the root `index.html` is already the built site and
+there are no relative asset dependencies other than the screenshots in `assets/`.
+
+**Heads-up on dotfiles:** `.nojekyll`, `.gitignore` and `.github/workflows/pages.yml` start
+with a dot, so some archive extractors and drag-and-drop uploads silently drop them. If you
+re-create the repository by hand, add them explicitly — the Actions route below does nothing
+without `pages.yml`.
 
 <details>
 <summary><b>Optional: rebuild on every push with GitHub Actions</b></summary>
@@ -119,6 +125,10 @@ the screenshots in `assets/`.
 The workflow in `.github/workflows/pages.yml` regenerates the site from the generator source
 (`perchance/`) and deploys it. To use it, set **Settings → Pages → Source: _GitHub Actions_**.
 If you prefer the branch deployment above, just delete `.github/`.
+
+Note that the workflow overwrites the deployed copy of `index.html` from `perchance/`, so the
+committed root `index.html` is a convenience snapshot for the branch-deployment route; keep
+them in sync by running `node build.mjs` before committing.
 </details>
 
 ### Put the theme on your server
@@ -144,6 +154,8 @@ assets/
   screenshot.jpg        hero image for this README
   font-picker.jpg       screenshot: the font library
   export-install.jpg    screenshot: the export dialog
+.nojekyll               tells Pages to serve the files as-is instead of running Jekyll
+.gitignore              node/OS leftovers
 .github/workflows/
   pages.yml             optional: rebuild + deploy to GitHub Pages on push
 ```
@@ -162,9 +174,10 @@ If someone edits the logo in `perchance/index.html` without updating `assets/ico
 the build **fails with an explanatory error** instead of silently shipping a stale favicon.
 
 The social-card image (`og:image` / `twitter:image`) is taken from the `image` key in
-`perchance/main.pjs`, which currently points at a hosted screenshot. For link previews on your
-own deployment, set it to an absolute URL of your copy, e.g.
-`https://<your-user>.github.io/<your-repo>/assets/screenshot.jpg`.
+`perchance/main.pjs`, which currently points at a hosted screenshot so that the card works
+even before Pages is enabled. For link previews on your own deployment, set it to an absolute
+URL of your copy, e.g.
+`https://stradios.github.io/Jellyfin-Theme-Studio/assets/screenshot.jpg`.
 
 ## How it works
 
