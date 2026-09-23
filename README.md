@@ -22,8 +22,9 @@ It targets both generations of Jellyfin styling: the new **10.11+ palette variab
 plugins, no theme repository, no server access required: *Dashboard → Branding → Custom CSS*,
 paste, save.
 
-**Try it without cloning anything:** <https://perchance.org/jellyfin-theme-studio> — or the
-self-hosted copy of the same file at <https://stradios.github.io/Jellyfin-Theme-Studio/>.
+**Try it without cloning anything:** <https://stradios.github.io/Jellyfin-Theme-Studio/> — 
+or the self-hosted copy of the same file at <https://github.com/Stradios/Jellyfin-Theme-Studio#quick-start>.
+.
 
 <p align="center">
   <img src="assets/font-picker.jpg" width="49%" alt="The font picker: 2,035 families with search, category and library filters, licence badges and live previews">
