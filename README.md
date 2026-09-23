@@ -1,7 +1,7 @@
 <div align="center">
   <img src="assets/icon.svg" width="104" height="104" alt="Jellyfin Theme Studio icon">
   <h1>Jellyfin Theme Studio</h1>
-  <p><b>Design a Jellyfin theme in your browser — then paste the generated CSS into your server.</b></p>
+  <p><b>Design a Jellyfin theme in your browser, then paste the CSS into your server.</b></p>
   <p>
     <a href="LICENSE"><img alt="Licence: MIT" src="https://img.shields.io/badge/licence-MIT-9f57b8?style=flat-square"></a>
     <img alt="Runtime: vanilla JS, no build step" src="https://img.shields.io/badge/runtime-vanilla%20JS%2C%20no%20build%20step-029ad0?style=flat-square">
@@ -13,249 +13,124 @@
 
 ---
 
-A visual theme designer for [Jellyfin](https://jellyfin.org). Tune colours, surfaces, the
-header, cards, wallpaper, effects and typography while a faithful, **isolated Jellyfin Web
-mock-up** updates live next to you — then export a single, paste-ready stylesheet.
+A visual theme designer for [Jellyfin](https://jellyfin.org). Adjust colours, layout, fonts and effects while a live Jellyfin preview updates next to you, then export one ready-to-paste stylesheet.
 
-It targets both generations of Jellyfin styling: the new **10.11+ palette variables**
-(`--jf-palette-*` inside `:root`) **and** the classic 10.8–10.10 selectors, in one file. No
-plugins, no theme repository, no server access required: *Dashboard → Branding → Custom CSS*,
-paste, save.
+Supports both Jellyfin styling systems: the newer `--jf-palette-*` variables (10.11+) and the classic selectors (10.8–10.10) — in a single output file. No plugins or server access needed: **Dashboard → Branding → Custom CSS → paste → Save**.
 
-**Try it without cloning anything:** <https://stradios.github.io/Jellyfin-Theme-Studio/> — 
-or the self-hosted copy of the same file at <https://github.com/Stradios/Jellyfin-Theme-Studio#quick-start>.
-.
+**Try it live:** <https://stradios.github.io/Jellyfin-Theme-Studio/>
 
 <p align="center">
-  <img src="assets/font-picker.jpg" width="49%" alt="The font picker: 2,035 families with search, category and library filters, licence badges and live previews">
-  <img src="assets/export-install.jpg" width="49%" alt="The export dialog's Install tab with the copy-paste instructions">
+  <img src="assets/font-picker.jpg" width="49%" alt="Font picker with search, filters, and live previews">
+  <img src="assets/export-install.jpg" width="49%" alt="Export dialog's Install tab">
 </p>
 
 ## Features
 
-**Live preview**
-
-- Four screens (**Home**, **Detail page**, **Dialog**, **Login**) in two device frames
-  (**Desktop 1280×800**, **Mobile 430×860**), rendered with real Jellyfin Web class names so
-  the preview reacts the same way your server will.
-- The mock lives in its own same-origin iframe with its own `<style>` element — the studio's
-  own UI can never leak into the theme, and the theme can never leak into the studio.
-- Preview is camera-scaled to fit, so any window size shows the whole device.
-
-**Theme controls**
-
-- **12 built-in presets** (Jellyfin Blue, Midnight, Nord Frost, Dracula, Gruvbox, Catppuccin,
-  Sakura, Emerald, Amber CRT, Cyberpunk, Ocean Deep, Paper) plus a **“Surprise me”** randomiser
-  that keeps the result coherent.
-- Palette: app background, surfaces/cards, header, side drawer, text, secondary text, accent
-  and secondary accent, dividers, scrollbar, plus automatic hover/soft/dark variants.
-  Every colour row has a swatch picker **and** a hex field.
-- Header modes (solid / gradient / transparent), optional blur/glass surfaces, glow strength,
-  corner radius, UI radius, drop shadows, card hover effects (lift, glow, zoom, border).
-- Wallpaper: any image URL, with blur, darkening, opacity and a “film grain/overlay” option —
-  or paste a sample URL to try one instantly.
-- Typography: body, heading and monospace families, body/heading weights, a modular heading
-  scale (h1 = r³, h2 = r², h3 = r), base size, line height, letter spacing, uppercase titles,
-  tabular numbers and font smoothing.
-- Extras: page scroll-to-top button, themed scrollbars, backdrop treatment, “now playing” bar,
-  login screen, dialog styling and more.
-
-**Fonts**
-
-- **2,035 families** in the picker: the OS stack, the 8 Noto faces Jellyfin already bundles
-  (no download at all), **1,938 Google Fonts**, 64 Fontshare/ITF faces and the Velvetyne +
-  League of Moveable Type collections.
-- Search, category tabs (sans/serif/display/handwriting/mono), library tabs, licence badges,
-  available-weight badges and a **Live previews** toggle so you can render a page without
-  pulling in hundreds of webfonts.
-- Weight sliders are clamped to the weights a family actually ships, variable fonts are
-  requested as a single `wght@min..max` axis, and only the weights you use are imported.
-- Fonts are loaded from the **official** sources (Google Fonts, Fontshare, jsDelivr). The
-  exported stylesheet credits every family it pulls in, with its licence (OFL, Apache-2.0, or
-  the Fontshare/ITF Free Font Licence), so attribution travels with the CSS.
-- Google families can be pointed at **Bunny Fonts** instead of Google in one click, or avoided
-  entirely by choosing the System/Jellyfin-bundled stacks — useful for offline or GDPR-minded
-  setups.
-
-**Export & sharing**
-
-- **Stylesheet** tab: the full CSS (optionally minified), one-click copy, or download as
-  `.css`. Named themes are saved to `localStorage` (last 20) so you can come back to them.
-- **Install** tab: exactly where the CSS goes in Jellyfin, and what each part of the generated
-  file does.
-- **Share & save** tab: a permalink that encodes the entire theme in the URL hash
-  (`#t=…` base64) — pasting it into a chat or an issue reproduces the design exactly.
-- Live **contrast checking**: every text/background pair shows its WCAG ratio and grade
-  (AAA/AA/AA Large/icons only) with a warning when something would be unreadable.
+- **Live preview** — Home, Detail, Dialog and Login screens, on Desktop and Mobile frames, rendered with real Jellyfin class names in an isolated iframe.
+- **Theme controls** — 12 presets plus a "Surprise me" randomiser; full palette editing (background, surfaces, header, text, accents, dividers); header/blur/glow/radius/shadow options; wallpaper support; typography controls (fonts, weights, scale, spacing); plus extras like themed scrollbars and a "now playing" bar.
+- **Fonts** — 2,035 families (system fonts, Google Fonts, Fontshare, Velvetyne, League of Moveable Type), searchable with licence info and live previews. Only the weights you use get imported. Google fonts can be swapped to Bunny Fonts for privacy, or skipped entirely.
+- **Export & sharing** — Copy or download the CSS, save named themes locally, generate a shareable permalink, and see live WCAG contrast ratings for every text/background pair.
 
 ## Quick start
 
-The site is a single static `index.html`. There is **no build step to run it** and no
-dependencies at runtime.
+Single static `index.html`, no build step or dependencies:
 
 ```bash
-# clone and open it
 git clone https://github.com/Stradios/Jellyfin-Theme-Studio.git
 cd Jellyfin-Theme-Studio
 python3 -m http.server 8080     # or: npx serve .
 # → http://localhost:8080/
 ```
 
-Opening `index.html` straight from disk (`file://`) also works in most browsers, but a tiny
-static server is more reliable for fonts and clipboard permissions.
+Opening `index.html` directly from disk also works in most browsers, but a local server is more reliable for fonts and clipboard access.
 
-### Deploy it on GitHub Pages
+### Deploy on GitHub Pages
 
-1. Fork or clone this repository (or push the whole folder to your own repo's `main` branch).
-2. **Settings → Pages → Build and deployment → Source: _Deploy from a branch_**, branch
-   `main`, folder **/ (root)**. Save.
-3. A minute later your studio is live at `https://<your-user>.github.io/<your-repo>/` — for
-   this repository that is <https://stradios.github.io/Jellyfin-Theme-Studio/>.
+1. Fork or push this repo to your own `main` branch.
+2. **Settings → Pages → Source: Deploy from a branch**, branch `main`, folder `/ (root)`. Save.
+3. Your site goes live at `https://<your-user>.github.io/<your-repo>/`.
 
-Nothing else is needed for this route: the root `index.html` is already the built site and
-there are no relative asset dependencies other than the screenshots in `assets/`.
-
-**Heads-up on dotfiles:** `.nojekyll`, `.gitignore` and `.github/workflows/pages.yml` start
-with a dot, so some archive extractors and drag-and-drop uploads silently drop them. If you
-re-create the repository by hand, add them explicitly — the Actions route below does nothing
-without `pages.yml`.
+**Note:** `.nojekyll`, `.gitignore` and `.github/workflows/pages.yml` are dotfiles — some archive tools drop them. Add them manually if needed.
 
 <details>
-<summary><b>Optional: rebuild on every push with GitHub Actions</b></summary>
+<summary>Optional: auto-rebuild with GitHub Actions</summary>
 
-The workflow in `.github/workflows/pages.yml` regenerates the site from the generator source
-(`perchance/`) and deploys it. To use it, set **Settings → Pages → Source: _GitHub Actions_**.
-If you prefer the branch deployment above, just delete `.github/`.
+`.github/workflows/pages.yml` rebuilds the site from `perchance/` on every push. To use it, set **Pages → Source: GitHub Actions**. Otherwise delete `.github/`.
 
-Note that the workflow overwrites the deployed copy of `index.html` from `perchance/`, so the
-committed root `index.html` is a convenience snapshot for the branch-deployment route; keep
-them in sync by running `node build.mjs` before committing.
+Since the workflow regenerates `index.html` from `perchance/`, run `node build.mjs` before committing to keep the two in sync.
 </details>
 
-### Put the theme on your server
+### Apply the theme in Jellyfin
 
-1. In the studio, hit **Get CSS** and copy the stylesheet (or download the `.css`).
-2. In Jellyfin: **Dashboard → Branding → Custom CSS** → paste → **Save**.
-   *Per-user instead?* **Settings → Display → Custom CSS** applies it to just your account.
-3. Hard-refresh the web client. Every user of that server who loads Jellyfin Web picks the
-   theme up; other clients (mobile apps, TVs) ignore custom CSS by design.
-4. Reload after changing the theme — Jellyfin caches the stylesheet.
+1. In the studio, click **Get CSS** and copy (or download) the stylesheet.
+2. In Jellyfin: **Dashboard → Branding → Custom CSS → paste → Save** (or **Settings → Display → Custom CSS** for just your account).
+3. Hard-refresh the web client. Note: mobile apps and TV clients ignore custom CSS.
+4. Reload again after future edits — Jellyfin caches the stylesheet.
 
 ## Repository layout
 
 ```
-index.html              the site — generated from perchance/ by build.mjs (do not hand-edit)
-build.mjs               node script: rebuilds index.html from the generator source
-build-site.mjs          the pure transform used by build.mjs (no dependencies)
+index.html              the built site (generated — do not hand-edit)
+build.mjs               rebuilds index.html from perchance/
+build-site.mjs          the transform used by build.mjs
 perchance/
-  index.html            the generator's markup + the whole application (source of truth)
-  main.pjs              the generator's metadata (title, description, tags, social image)
-assets/
-  icon.svg              the app icon (also inlined as the favicon)
-  screenshot.jpg        hero image for this README
-  font-picker.jpg       screenshot: the font library
-  export-install.jpg    screenshot: the export dialog
-.nojekyll               tells Pages to serve the files as-is instead of running Jekyll
-.gitignore              node/OS leftovers
+  index.html            the actual source: markup + app logic
+  main.pjs               generator metadata (title, description, social image)
+assets/                 icon and README screenshots
 .github/workflows/
-  pages.yml             optional: rebuild + deploy to GitHub Pages on push
+  pages.yml             optional auto-deploy on push
 ```
 
-`index.html` is a build artifact: the app itself lives in `perchance/index.html`, where the
-header still uses the generator's `[title]` / `[subtitle]` placeholders. `build.mjs` fills
-those in and wraps the body in a complete document with `<title>`, meta description, Open
-Graph/Twitter cards and an inline SVG favicon.
+`perchance/index.html` is the source of truth. Run `node build.mjs` to regenerate `index.html` after editing it.
 
 ```bash
 node build.mjs                       # reads perchance/, writes ./index.html
-node build.mjs perchance _site       # or pick your own source/output
+node build.mjs perchance _site       # custom source/output paths
 ```
 
-If someone edits the logo in `perchance/index.html` without updating `assets/icon.svg`,
-the build **fails with an explanatory error** instead of silently shipping a stale favicon.
-
-The social-card image (`og:image` / `twitter:image`) is taken from the `image` key in
-`perchance/main.pjs`, which currently points at a hosted screenshot so that the card works
-even before Pages is enabled. For link previews on your own deployment, set it to an absolute
-URL of your copy, e.g.
-`https://stradios.github.io/Jellyfin-Theme-Studio/assets/screenshot.jpg`.
+If the logo changes in `perchance/index.html` without updating `assets/icon.svg`, the build fails with an error instead of shipping a stale favicon.
 
 ## How it works
 
-- **One HTML file, vanilla JS.** `perchance/index.html` holds the markup, the studio chrome
-  CSS, the font-library data and the application script. No framework, no bundler, no
-  runtime dependencies — which is also why the whole thing works from a plain static host.
-- **One `buildCss(o)` for everything.** The same function feeds the live preview and the
-  export, so what you see is literally what you copy. It emits three parts: `:root` palette
-  variables (Jellyfin 10.11+), a classic selector block (10.8–10.10, still valid on 10.11)
-  and optional extras (wallpaper, scrollbars, glows, hover effects).
-- **A real mock, not a picture.** The preview iframe is written with `document.write` using
-  the same class names Jellyfin Web uses (`.cardBox`, `.detailPagePrimaryContainer`,
-  `.emby-button`, …), including a header, drawer, poster grid, playback bar, dialogs and the
-  login screen, so theme rules are exercised exactly as they will be in production.
-- **Contrast math is local.** WCAG relative luminance and ratios are computed in-page, per
-  colour pair, with no external library.
-- **Sharing is stateless.** A theme is a JSON object; `encodeState()` base64-encodes it into
-  the URL hash. There is no backend, no account, and nothing to expire.
+- **One HTML file, vanilla JS** — no framework, bundler or runtime dependencies.
+- **One `buildCss(o)` function** powers both the live preview and the exported CSS, so what you see is what you get.
+- **A real mock, not an image** — the preview iframe uses actual Jellyfin Web class names (`.cardBox`, `.emby-button`, etc.) so theme rules behave as they will in production.
+- **Contrast checking is local** — WCAG ratios computed in-page, no external library.
+- **Sharing is stateless** — the theme is JSON, base64-encoded into the URL hash. No backend, no accounts.
 
 ## Privacy
 
-- 100% client-side. No analytics, no cookies, no accounts, no server component of any kind.
-- Saved themes and the current state live in your browser's `localStorage` only.
-- The only network requests the app makes are the font stylesheets you select (Google Fonts,
-  Fontshare or jsDelivr) and, if you configure one, the wallpaper image **for the preview**.
-  The exported CSS only references fonts and wallpapers — your Jellyfin clients fetch those,
-  not your server.
-- Nothing about your server, users or library ever leaves the page.
+100% client-side: no analytics, cookies, accounts or server component. Saved themes live only in your browser's `localStorage`. The app only contacts the network for font files you select and any wallpaper image you configure — your server and library data never leave the page.
 
 ## Browser support
 
-Any current Chromium, Firefox or Safari (desktop or mobile). The app uses
-`document.write` for the preview iframe, `ResizeObserver` for fit-to-pane scaling and
-CSS custom properties throughout. It works in in-app browsers too — no service worker, no
-module bundling, no special headers needed.
+Any current Chromium, Firefox or Safari, desktop or mobile. Uses `document.write`, `ResizeObserver` and CSS custom properties — no service worker or special headers required.
 
-## Roadmap / ideas
+## Roadmap
 
-- More preview screens (library grid, admin dashboard, music player, live TV guide).
-- Export/import theme JSON, and a share-link QR code.
-- Per-element overrides (a "click the preview to select the element" inspector).
-- Optional generator for [Jellyfin
-  theming plugins](https://github.com/danieladov/jellyfin-plugin-skin-manager)-style JSON.
-- Side-by-side theme comparison and A/B toggling.
+- More preview screens (library grid, admin dashboard, music player, live TV)
+- Theme JSON export/import, with a QR code for share links
+- Per-element override inspector
+- Skin Manager plugin-style JSON export
+- Side-by-side theme comparison
 
-Issues and PRs are welcome — especially **preset contributions** (a named palette + options
-object) and **selector fixes** for Jellyfin versions that changed their markup.
+Issues and PRs welcome, especially preset contributions and selector fixes for other Jellyfin versions.
 
 ## Contributing
 
-1. Fork, then edit `perchance/index.html` (that is the source of truth).
-2. If you touched the logo, update `assets/icon.svg` to match.
-3. Run `node build.mjs` so the committed `index.html` is up to date.
-4. Open a PR describing what changed and, if it is a visual change, with screenshots.
+1. Fork and edit `perchance/index.html` (the source of truth).
+2. Update `assets/icon.svg` if you change the logo.
+3. Run `node build.mjs` to regenerate `index.html`.
+4. Open a PR with a description and screenshots for visual changes.
 
 ## Licence & trademark
 
-The code in this repository is released under the **MIT Licence** — see [LICENSE](LICENSE).
-Replace the copyright holder line with your own name or handle if you fork it.
+MIT Licence — see [LICENSE](LICENSE). Replace the copyright holder if you fork this.
 
-**This is an unofficial, community project.** “Jellyfin” and the Jellyfin logo are the
-property of the Jellyfin project; this studio is not affiliated with, endorsed by, or
-supported by them. The icon shipped here is an original mark drawn for this tool (a
-reinterpretation of the Jellyfin delta, with a jelly-like wobble and a liquid “theme level”
-inside it) and is not the official Jellyfin logo; if the Jellyfin project asks for a change,
-it will be changed.
+Unofficial, community project — not affiliated with or endorsed by Jellyfin. The icon is an original design, not the official Jellyfin logo.
 
-Fonts are **not** redistributed here: the app links to Google Fonts, Fontshare and jsDelivr,
-and each family stays under its own licence (OFL, Apache-2.0, or the Fontshare/ITF Free Font
-Licence). The exported stylesheet credits every family it uses so you can keep attribution
-intact.
+Fonts are not redistributed; the app links to Google Fonts, Fontshare and jsDelivr under their own licences. The exported CSS credits every font family used.
 
 ## Credits
 
-- [Jellyfin](https://jellyfin.org) — the media server, and the class names the preview mocks.
-- [Google Fonts](https://fonts.google.com), [Fontshare](https://fontshare.com) (Indian Type
-  Foundry), [Velvetyne](https://velvetyne.fr), [The League of Moveable Type](https://www.theleagueofmoveabletype.com)
-  and [Bunny Fonts](https://fonts.bunny.net) for the type.
-- Every preset palette belongs to its community: Nord, Dracula, Gruvbox, Catppuccin and
-  friends — thanks for the colours.
+[Jellyfin](https://jellyfin.org), [Google Fonts](https://fonts.google.com), [Fontshare](https://fontshare.com), [Velvetyne](https://velvetyne.fr), [The League of Moveable Type](https://www.theleagueofmoveabletype.com), [Bunny Fonts](https://fonts.bunny.net), and the communities behind Nord, Dracula, Gruvbox, Catppuccin and other preset palettes.
