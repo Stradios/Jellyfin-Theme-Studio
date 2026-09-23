@@ -1,0 +1,9 @@
+$meta
+  title = Jellyfin Theme Studio
+  description = Design a custom theme for your Jellyfin media server — colors, cards, header, wallpaper, fonts — then copy the generated CSS into Dashboard > Branding > Custom CSS. Targets Jellyfin 10.8-10.10 selectors and the new 10.11 palette variables.
+  tags = jellyfin, theme, custom css, css, theme generator, media server, dark theme, theming
+  image = https://user.uploads.dev/file/4b89bbe6a68500bd92ec1d9df9372cb7.jpg
+
+title = Jellyfin Theme Studio
+subtitle = Design a Jellyfin theme live, export the CSS, paste it into your server.
+defaultPreset = Jellyfin Blue
