@@ -1,3 +1,5 @@
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M8K423K344)
+
 <div align="center">
   <img src="assets/icon.svg" width="104" height="104" alt="Jellyfin Theme Studio icon">
   <h1>Jellyfin Theme Studio</h1>
